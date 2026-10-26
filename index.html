@@ -1,21 +1,602 @@
 <!DOCTYPE html>
-<html lang="ja">
- <head>
+<html lang="ja" class="dark scroll-smooth">
+<head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <title lang="en">HyperText Markup Language - Wikipedia</title>
- </head>
- <body>
-  <article>
-   <h1 lang="en">HyperText Markup Language</h1>
-   <p>HTMLは、<a href="http://ja.wikipedia.org/wiki/SGML">SGML</a>
-      アプリケーションの一つで、ハイパーテキストを利用してワールド
-      ワイドウェブ上で情報を発信するために作られ、
-      ワールドワイドウェブの<strong>基幹的役割</strong>をなしている。
-      情報を発信するための文書構造を定義するために使われ、
-      ある程度機械が理解可能な言語で、
-      写真の埋め込みや、フォームの作成、
-      ハイパーテキストによるHTML間の連携が可能である。</p>
-  </article>
- </body>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lapis & Gold Masterpiece | Portfolio</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: {
+              900: '#0B0C10',
+              800: '#12141C',
+              700: '#1B1E2B',
+              600: '#262A3C',
+            },
+            gold: {
+              300: '#FFE8A3',
+              400: '#F7D070',
+              500: '#D4AF37',
+              600: '#AA820A',
+              700: '#805E00',
+            }
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'shimmer': 'shimmer 2.5s linear infinite',
+            'glow': 'glow 2s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-15px)' },
+            },
+            shimmer: {
+              '0%': { backgroundPosition: '-200% 0' },
+              '100%': { backgroundPosition: '200% 0' },
+            },
+            glow: {
+              '0%': { filter: 'drop-shadow(0 0 15px rgba(212, 175, 55, 0.3))' },
+              '100%': { filter: 'drop-shadow(0 0 30px rgba(212, 175, 55, 0.8))' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Styling for Luxury Aesthetics */
+    body {
+      background-color: #050608;
+      color: #E2E8F0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0B0C10;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #D4AF37, #805E00);
+      border-radius: 4px;
+    }
+
+    /* Gold Metallic Gradients */
+    .text-gold-gradient {
+      background: linear-gradient(135deg, #FFF0CA 0%, #D4AF37 50%, #997819 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .bg-gold-gradient {
+      background: linear-gradient(135deg, #FFE8A3 0%, #D4AF37 50%, #805E00 100%);
+    }
+
+    .border-gold-gradient {
+      border-image: linear-gradient(135deg, rgba(212, 175, 55, 0.8), rgba(212, 175, 55, 0.1)) 1;
+    }
+
+    /* Glassmorphism Effect */
+    .glass-card {
+      background: rgba(18, 20, 28, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(212, 175, 55, 0.6);
+      box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15);
+    }
+
+    /* Gold Glow & Neumorphic Elements */
+    .gold-glow {
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+    }
+
+    .gold-glow-lg {
+      box-shadow: 0 0 50px rgba(212, 175, 55, 0.25);
+    }
+
+    /* Custom Cursor Glow Effect */
+    #cursor-glow {
+      pointer-events: none;
+      position: fixed;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(0,0,0,0) 70%);
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s;
+      z-index: 9999;
+    }
+
+    /* Shimmer Button */
+    .btn-shimmer {
+      background: linear-gradient(90deg, #D4AF37 0%, #FFF0CA 50%, #D4AF37 100%);
+      background-size: 200% 100%;
+      animation: shimmer 3s infinite linear;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen selection:bg-gold-500 selection:text-black">
+
+  <!-- Interactive Custom Glow Cursor -->
+  <div id="cursor-glow"></div>
+
+  <!-- Background Canvas for Interactive Particle Starfield -->
+  <canvas id="particle-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
+
+  <!-- Ambient Golden Light Orbs -->
+  <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-gold-500/10 rounded-full blur-[140px] pointer-events-none z-0"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-gold-600/10 rounded-full blur-[160px] pointer-events-none z-0"></div>
+
+  <!-- Main Container -->
+  <div class="relative z-10 flex flex-col min-h-screen">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 px-6 py-4 transition-all duration-300 backdrop-blur-md border-b border-gold-500/10 bg-obsidian-900/70">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-full bg-gold-gradient p-[1px] shadow-lg shadow-gold-500/20 group-hover:scale-105 transition-transform duration-300">
+            <div class="w-full h-full bg-obsidian-900 rounded-full flex items-center justify-center">
+              <i class="fa-solid font-serif text-gold-400 font-bold text-lg">M</i>
+            </div>
+          </div>
+          <span class="font-serif text-xl tracking-widest font-semibold text-gold-gradient">MAESTRO</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-8 text-sm tracking-wider font-medium text-gray-300">
+          <a href="#about" class="hover:text-gold-400 transition-colors duration-300">ABOUT</a>
+          <a href="#showcase" class="hover:text-gold-400 transition-colors duration-300">PORTFOLIO</a>
+          <a href="#skills" class="hover:text-gold-400 transition-colors duration-300">CAPABILITIES</a>
+          <a href="#contact" class="hover:text-gold-400 transition-colors duration-300">CONTACT</a>
+        </nav>
+
+        <!-- CTA Button -->
+        <a href="#contact" class="hidden sm:inline-block px-6 py-2.5 rounded-full font-semibold text-xs tracking-widest uppercase text-obsidian-900 bg-gold-gradient btn-shimmer hover:shadow-[0_0_20px_rgba(212,175,55,0.6)] transition-all duration-300 transform hover:-translate-y-0.5">
+          Get In Touch
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="md:hidden text-gold-400 text-2xl focus:outline-none">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-menu" class="hidden md:hidden flex-col gap-4 pt-4 pb-2 px-4 border-t border-gold-500/10 mt-3 text-sm">
+        <a href="#about" class="block text-gray-300 hover:text-gold-400 py-1">ABOUT</a>
+        <a href="#showcase" class="block text-gray-300 hover:text-gold-400 py-1">PORTFOLIO</a>
+        <a href="#skills" class="block text-gray-300 hover:text-gold-400 py-1">CAPABILITIES</a>
+        <a href="#contact" class="block text-gray-300 hover:text-gold-400 py-1">CONTACT</a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center justify-center px-6 py-20 overflow-hidden">
+      <div class="max-w-5xl mx-auto text-center space-y-8">
+        
+        <!-- Status Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-gold-500/30 text-gold-300 text-xs tracking-widest uppercase animate-pulse-slow">
+          <span class="w-2 h-2 rounded-full bg-gold-400 animate-ping"></span>
+          Available for Select Commissions
+        </div>
+
+        <!-- Main Title -->
+        <div class="space-y-4">
+          <h1 class="font-serif text-5xl sm:text-7xl lg:text-8xl font-normal tracking-tight text-white leading-tight">
+            Lapis & Gold <br>
+            <span class="italic font-light text-gold-gradient drop-shadow-2xl">Masterpiece</span>
+          </h1>
+          <p class="max-w-2xl mx-auto text-base sm:text-lg text-gray-400 font-light leading-relaxed tracking-wide">
+            Crafting digital experiences with unyielding precision, opulent visual design, and state-of-the-art interactive architecture.
+          </p>
+        </div>
+
+        <!-- Hero Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-5 pt-4">
+          <a href="#showcase" class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-xs tracking-widest uppercase text-obsidian-900 bg-gold-gradient btn-shimmer gold-glow hover:scale-105 transition-all duration-300">
+            Explore Showcase <i class="fa-solid fa-arrow-right-long ml-2"></i>
+          </a>
+          <a href="#about" class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-xs tracking-widest uppercase text-gold-300 glass-card hover:bg-gold-500/10 hover:border-gold-500/60 transition-all duration-300">
+            Discover Story
+          </a>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="pt-16 animate-float">
+          <a href="#showcase" class="inline-flex flex-col items-center gap-2 text-gold-400/60 hover:text-gold-400 transition-colors">
+            <span class="text-[10px] tracking-widest uppercase">Scroll to Discover</span>
+            <i class="fa-solid fa-chevron-down text-sm"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Showcase Section -->
+    <section id="showcase" class="py-24 px-6 max-w-7xl mx-auto w-full">
+      
+      <!-- Section Title -->
+      <div class="flex flex-col items-center text-center mb-16 space-y-3">
+        <span class="text-xs font-semibold uppercase tracking-widest text-gold-500">Curated Works</span>
+        <h2 class="font-serif text-4xl sm:text-5xl text-white">Interactive Gallery</h2>
+        <div class="w-24 h-[1px] bg-gold-gradient mt-2"></div>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="flex justify-center gap-3 mb-12 flex-wrap" id="gallery-tabs">
+        <button data-filter="all" class="tab-btn px-6 py-2.5 rounded-full text-xs tracking-wider uppercase font-semibold transition-all duration-300 bg-gold-gradient text-obsidian-900 shadow-md">All Works</button>
+        <button data-filter="design" class="tab-btn px-6 py-2.5 rounded-full text-xs tracking-wider uppercase font-semibold transition-all duration-300 glass-card text-gray-400 hover:text-gold-300">Luxury Design</button>
+        <button data-filter="dev" class="tab-btn px-6 py-2.5 rounded-full text-xs tracking-wider uppercase font-semibold transition-all duration-300 glass-card text-gray-400 hover:text-gold-300">Architecture</button>
+        <button data-filter="3d" class="tab-btn px-6 py-2.5 rounded-full text-xs tracking-wider uppercase font-semibold transition-all duration-300 glass-card text-gray-400 hover:text-gold-300">3D Interactive</button>
+      </div>
+
+      <!-- Showcase Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid">
+
+        <!-- Showcase Item 1 -->
+        <div class="gallery-item design glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-500 flex flex-col" data-title="Aetherium Watch Suite" data-desc="A ultra-high precision luxury smartwatch companion application designed with obsidian and gold aesthetics." data-tag="Luxury UI/UX">
+          <div class="relative h-64 overflow-hidden bg-obsidian-800">
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-900 via-transparent to-transparent z-10"></div>
+            <!-- Decorative SVG Placeholder Art -->
+            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-obsidian-700 to-obsidian-900 group-hover:scale-110 transition-transform duration-700">
+              <i class="fa-solid fa-clock text-7xl text-gold-500/30 group-hover:text-gold-400/60 transition-colors duration-500"></i>
+            </div>
+            <span class="absolute top-4 left-4 z-20 text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full bg-obsidian-900/80 border border-gold-500/30 text-gold-300">Design</span>
+          </div>
+          <div class="p-6 flex flex-col flex-grow justify-between">
+            <div>
+              <h3 class="font-serif text-2xl text-white group-hover:text-gold-300 transition-colors mb-2">Aetherium Chrono</h3>
+              <p class="text-sm text-gray-400 leading-relaxed">High-end watch configuration platform with real-time 3D rendering interactions.</p>
+            </div>
+            <div class="pt-6 flex justify-between items-center border-t border-gold-500/10 mt-6">
+              <span class="text-xs text-gold-500 font-mono">#01 / LUXURY</span>
+              <button class="open-modal-btn w-9 h-9 rounded-full bg-gold-500/10 hover:bg-gold-gradient text-gold-400 hover:text-obsidian-900 flex items-center justify-center transition-all duration-300">
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Showcase Item 2 -->
+        <div class="gallery-item dev glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-500 flex flex-col" data-title="Royal Vault Platform" data-desc="Fintech dashboard tailored for private banking clients with multi-layer encryption and bespoke analytics." data-tag="Web Architecture">
+          <div class="relative h-64 overflow-hidden bg-obsidian-800">
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-900 via-transparent to-transparent z-10"></div>
+            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-obsidian-700 to-obsidian-900 group-hover:scale-110 transition-transform duration-700">
+              <i class="fa-solid fa-vault text-7xl text-gold-500/30 group-hover:text-gold-400/60 transition-colors duration-500"></i>
+            </div>
+            <span class="absolute top-4 left-4 z-20 text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full bg-obsidian-900/80 border border-gold-500/30 text-gold-300">Architecture</span>
+          </div>
+          <div class="p-6 flex flex-col flex-grow justify-between">
+            <div>
+              <h3 class="font-serif text-2xl text-white group-hover:text-gold-300 transition-colors mb-2">Royal Sovereign Vault</h3>
+              <p class="text-sm text-gray-400 leading-relaxed">Next-generation asset management interface built for seamless high-value transactions.</p>
+            </div>
+            <div class="pt-6 flex justify-between items-center border-t border-gold-500/10 mt-6">
+              <span class="text-xs text-gold-500 font-mono">#02 / FINTECH</span>
+              <button class="open-modal-btn w-9 h-9 rounded-full bg-gold-500/10 hover:bg-gold-gradient text-gold-400 hover:text-obsidian-900 flex items-center justify-center transition-all duration-300">
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Showcase Item 3 -->
+        <div class="gallery-item 3d glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-500 flex flex-col" data-title="Celestial Sphere 3D" data-desc="Interactive WebGL astronomical map displaying celestial coordinates with golden constellation lines." data-tag="3D Experience">
+          <div class="relative h-64 overflow-hidden bg-obsidian-800">
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-900 via-transparent to-transparent z-10"></div>
+            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-obsidian-700 to-obsidian-900 group-hover:scale-110 transition-transform duration-700">
+              <i class="fa-solid fa-atom text-7xl text-gold-500/30 group-hover:text-gold-400/60 transition-colors duration-500"></i>
+            </div>
+            <span class="absolute top-4 left-4 z-20 text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full bg-obsidian-900/80 border border-gold-500/30 text-gold-300">3D WebGL</span>
+          </div>
+          <div class="p-6 flex flex-col flex-grow justify-between">
+            <div>
+              <h3 class="font-serif text-2xl text-white group-hover:text-gold-300 transition-colors mb-2">Celestial Cosmos</h3>
+              <p class="text-sm text-gray-400 leading-relaxed">Immersive 3D star map utilizing WebGL lighting models and shader physics.</p>
+            </div>
+            <div class="pt-6 flex justify-between items-center border-t border-gold-500/10 mt-6">
+              <span class="text-xs text-gold-500 font-mono">#03 / WEBGL</span>
+              <button class="open-modal-btn w-9 h-9 rounded-full bg-gold-500/10 hover:bg-gold-gradient text-gold-400 hover:text-obsidian-900 flex items-center justify-center transition-all duration-300">
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Capabilities / Skills Section -->
+    <section id="skills" class="py-24 px-6 bg-obsidian-900/50 border-y border-gold-500/10">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col items-center text-center mb-16 space-y-3">
+          <span class="text-xs font-semibold uppercase tracking-widest text-gold-500">Excellence & Skill</span>
+          <h2 class="font-serif text-4xl sm:text-5xl text-white">Mastered Capabilities</h2>
+          <div class="w-24 h-[1px] bg-gold-gradient mt-2"></div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+          <!-- Skill Badge 1 -->
+          <div class="glass-card p-6 rounded-xl flex flex-col items-center text-center space-y-3 hover:border-gold-400 transition-all duration-300 group">
+            <div class="w-14 h-14 rounded-full bg-gold-500/10 flex items-center justify-center text-gold-400 text-2xl group-hover:scale-110 group-hover:bg-gold-gradient group-hover:text-obsidian-900 transition-all duration-300">
+              <i class="fa-solid fa-pen-nib"></i>
+            </div>
+            <h3 class="font-serif text-lg text-white group-hover:text-gold-300">UI/UX Design</h3>
+            <p class="text-xs text-gray-400">Bespoke Design Systems</p>
+          </div>
+
+          <!-- Skill Badge 2 -->
+          <div class="glass-card p-6 rounded-xl flex flex-col items-center text-center space-y-3 hover:border-gold-400 transition-all duration-300 group">
+            <div class="w-14 h-14 rounded-full bg-gold-500/10 flex items-center justify-center text-gold-400 text-2xl group-hover:scale-110 group-hover:bg-gold-gradient group-hover:text-obsidian-900 transition-all duration-300">
+              <i class="fa-code fa-solid"></i>
+            </div>
+            <h3 class="font-serif text-lg text-white group-hover:text-gold-300">Frontend Dev</h3>
+            <p class="text-xs text-gray-400">Tailwind & React Core</p>
+          </div>
+
+          <!-- Skill Badge 3 -->
+          <div class="glass-card p-6 rounded-xl flex flex-col items-center text-center space-y-3 hover:border-gold-400 transition-all duration-300 group">
+            <div class="w-14 h-14 rounded-full bg-gold-500/10 flex items-center justify-center text-gold-400 text-2xl group-hover:scale-110 group-hover:bg-gold-gradient group-hover:text-obsidian-900 transition-all duration-300">
+              <i class="fa-cube fa-solid"></i>
+            </div>
+            <h3 class="font-serif text-lg text-white group-hover:text-gold-300">3D Shader & WebGL</h3>
+            <p class="text-xs text-gray-400">Three.js Animations</p>
+          </div>
+
+          <!-- Skill Badge 4 -->
+          <div class="glass-card p-6 rounded-xl flex flex-col items-center text-center space-y-3 hover:border-gold-400 transition-all duration-300 group">
+            <div class="w-14 h-14 rounded-full bg-gold-500/10 flex items-center justify-center text-gold-400 text-2xl group-hover:scale-110 group-hover:bg-gold-gradient group-hover:text-obsidian-900 transition-all duration-300">
+              <i class="fa-bolt fa-solid"></i>
+            </div>
+            <h3 class="font-serif text-lg text-white group-hover:text-gold-300">Performance</h3>
+            <p class="text-xs text-gray-400">Ultra-fast Optimization</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Visual Accent -->
+        <div class="relative flex justify-center">
+          <div class="w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-gold-600/20 to-obsidian-700 border border-gold-500/30 flex items-center justify-center gold-glow">
+            <div class="w-60 h-60 sm:w-80 sm:h-80 rounded-full border border-gold-400/40 flex items-center justify-center p-8 text-center glass-card">
+              <div class="space-y-3">
+                <i class="fa-solid fa-crown text-4xl text-gold-400 animate-pulse"></i>
+                <h3 class="font-serif text-xl text-white">Uncompromising Quality</h3>
+                <p class="text-xs text-gray-400">Redefining high-end web experiences with precision craftsmanship.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text Description -->
+        <div class="space-y-6">
+          <span class="text-xs font-semibold uppercase tracking-widest text-gold-500">About The Mastermind</span>
+          <h2 class="font-serif text-4xl sm:text-5xl text-white leading-tight">Sculpting Gold Out Of Digital Noise</h2>
+          <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+            Welcome to a showcase designed with meticulous care. Every line of code, pixel alignment, and color choices reflect a deep devotion to elegance and functional perfection.
+          </p>
+          <div class="grid grid-cols-2 gap-6 pt-4">
+            <div class="border-l-2 border-gold-500 pl-4">
+              <h4 class="font-serif text-2xl text-gold-300">100%</h4>
+              <p class="text-xs text-gray-400 uppercase tracking-wider">Precision Focused</p>
+            </div>
+            <div class="border-l-2 border-gold-500 pl-4">
+              <h4 class="font-serif text-2xl text-gold-300">24K</h4>
+              <p class="text-xs text-gray-400 uppercase tracking-wider">Aesthetic Standard</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / Footer Section -->
+    <footer id="contact" class="mt-auto bg-obsidian-900 border-t border-gold-500/20 py-16 px-6">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h3 class="font-serif text-2xl text-gold-gradient">Lapis & Gold Studio</h3>
+          <p class="text-xs text-gray-400">© 2026 Maestro Portfolio. All Rights Reserved.</p>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="flex gap-4">
+          <a href="#" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-gold-400 hover:bg-gold-gradient hover:text-obsidian-900 transition-all duration-300">
+            <i class="fa-brands fa-github text-base"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-gold-400 hover:bg-gold-gradient hover:text-obsidian-900 transition-all duration-300">
+            <i class="fa-brands fa-x-twitter text-base"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-gold-400 hover:bg-gold-gradient hover:text-obsidian-900 transition-all duration-300">
+            <i class="fa-brands fa-linkedin-in text-base"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Interactive Modal Showcase -->
+  <div id="modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-6 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="glass-card max-w-xl w-full p-8 rounded-2xl relative border-gold-500/40 text-center space-y-6 transform scale-95 transition-transform duration-300" id="modal-card">
+      <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gold-400 text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="w-16 h-16 rounded-full bg-gold-500/10 text-gold-400 flex items-center justify-center text-3xl mx-auto">
+        <i class="fa-solid fa-gem"></i>
+      </div>
+      <h3 id="modal-title" class="font-serif text-3xl text-white">Project Title</h3>
+      <span id="modal-tag" class="inline-block text-xs uppercase tracking-widest text-gold-400 bg-gold-500/10 px-3 py-1 rounded-full border border-gold-500/30">Tag</span>
+      <p id="modal-desc" class="text-sm text-gray-300 leading-relaxed">Detailed project description goes here.</p>
+      <div class="pt-4">
+        <button id="modal-action-btn" class="px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest text-obsidian-900 bg-gold-gradient btn-shimmer w-full">
+          Launch Experience
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // Particle Starfield Background Animation
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.speedY = (Math.random() - 0.5) * 0.3;
+        this.alpha = Math.random() * 0.7 + 0.2;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+          this.reset();
+        }
+      }
+      draw() {
+        ctx.fillStyle = `rgba(212, 175, 55, ${this.alpha})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 70; i++) {
+      particles.push(new Particle());
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // Custom Glowing Cursor Follower
+    const cursorGlow = document.getElementById('cursor-glow');
+    window.addEventListener('mousemove', (e) => {
+      cursorGlow.style.left = `${e.clientX}px`;
+      cursorGlow.style.top = `${e.clientY}px`;
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('flex');
+    });
+
+    // Gallery Filter Tabs Logic
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Reset active styles
+        tabBtns.forEach(b => {
+          b.classList.remove('bg-gold-gradient', 'text-obsidian-900', 'shadow-md');
+          b.classList.add('glass-card', 'text-gray-400');
+        });
+
+        // Set active style on clicked
+        btn.classList.add('bg-gold-gradient', 'text-obsidian-900', 'shadow-md');
+        btn.classList.remove('glass-card', 'text-gray-400');
+
+        const filter = btn.getAttribute('data-filter');
+
+        galleryItems.forEach(item => {
+          if (filter === 'all' || item.classList.contains(filter)) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Modal Interaction Logic
+    const modal = document.getElementById('modal');
+    const modalCard = document.getElementById('modal-card');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalTag = document.getElementById('modal-tag');
+
+    document.querySelectorAll('.open-modal-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const item = e.target.closest('.gallery-item');
+        modalTitle.textContent = item.dataset.title;
+        modalDesc.textContent = item.dataset.desc;
+        modalTag.textContent = item.dataset.tag;
+
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        modalCard.classList.remove('scale-95');
+        modalCard.classList.add('scale-100');
+      });
+    });
+
+    function closeModal() {
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modalCard.classList.remove('scale-100');
+      modalCard.classList.add('scale-95');
+    }
+
+    closeModalBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  </script>
+</body>
 </html>
