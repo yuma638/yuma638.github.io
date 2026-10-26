@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lapis & Gold Masterpiece | Portfolio</title>
+  <title>AUREUS MAESTRO | Luxury Portal & Showcase</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+  <!-- Google Fonts: Cormorant Garamond, Cinzel & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Vanilla Tilt JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
   <script>
     tailwind.config = {
@@ -21,41 +23,52 @@
         extend: {
           colors: {
             obsidian: {
-              900: '#0B0C10',
-              800: '#12141C',
-              700: '#1B1E2B',
-              600: '#262A3C',
+              950: '#020305',
+              900: '#06070a',
+              800: '#0f111a',
+              700: '#181b29',
+              600: '#23283b',
             },
             gold: {
-              300: '#FFE8A3',
-              400: '#F7D070',
+              100: '#FFF8E7',
+              200: '#FFE8A3',
+              300: '#F7D070',
+              400: '#E6BA43',
               500: '#D4AF37',
               600: '#AA820A',
               700: '#805E00',
+              800: '#543E00',
+            },
+            diamond: {
+              100: '#E0F7FA',
+              200: '#B2EBF2',
+              300: '#80DEEA',
             }
           },
           fontFamily: {
-            serif: ['Playfair Display', 'serif'],
+            serif: ['Cormorant Garamond', 'serif'],
+            cinzel: ['Cinzel', 'serif'],
             sans: ['Plus Jakarta Sans', 'sans-serif'],
           },
           animation: {
-            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'pulse-slow': 'pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             'float': 'float 6s ease-in-out infinite',
-            'shimmer': 'shimmer 2.5s linear infinite',
-            'glow': 'glow 2s ease-in-out infinite alternate',
+            'shimmer': 'shimmer 3s linear infinite',
+            'diamond-sparkle': 'sparkle 2s ease-in-out infinite alternate',
+            'spin-slow': 'spin 20s linear infinite',
           },
           keyframes: {
             float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-15px)' },
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-15px) rotate(1deg)' },
             },
             shimmer: {
               '0%': { backgroundPosition: '-200% 0' },
               '100%': { backgroundPosition: '200% 0' },
             },
-            glow: {
-              '0%': { filter: 'drop-shadow(0 0 15px rgba(212, 175, 55, 0.3))' },
-              '100%': { filter: 'drop-shadow(0 0 30px rgba(212, 175, 55, 0.8))' },
+            sparkle: {
+              '0%': { opacity: '0.3', transform: 'scale(0.8)' },
+              '100%': { opacity: '1', transform: 'scale(1.2)' },
             }
           }
         }
@@ -64,29 +77,37 @@
   </script>
 
   <style>
-    /* Custom Styling for Luxury Aesthetics */
+    /* Absolute Luxury Styling Base */
     body {
-      background-color: #050608;
+      background-color: #020305;
       color: #E2E8F0;
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
     }
 
-    /* Custom Scrollbar */
+    /* Custom Royal Scrollbar */
     ::-webkit-scrollbar {
-      width: 8px;
+      width: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #0B0C10;
+      background: #020305;
     }
     ::-webkit-scrollbar-thumb {
       background: linear-gradient(180deg, #D4AF37, #805E00);
-      border-radius: 4px;
+      border-radius: 3px;
     }
 
-    /* Gold Metallic Gradients */
+    /* Shimmering Liquid Gold Text Gradients */
     .text-gold-gradient {
-      background: linear-gradient(135deg, #FFF0CA 0%, #D4AF37 50%, #997819 100%);
+      background: linear-gradient(135deg, #FFF8E7 0%, #FFE8A3 25%, #D4AF37 50%, #997819 75%, #FFF0CA 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 6s linear infinite;
+    }
+
+    .text-diamond-gradient {
+      background: linear-gradient(135deg, #FFFFFF 0%, #E0F7FA 50%, #80DEEA 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -95,425 +116,618 @@
       background: linear-gradient(135deg, #FFE8A3 0%, #D4AF37 50%, #805E00 100%);
     }
 
-    .border-gold-gradient {
-      border-image: linear-gradient(135deg, rgba(212, 175, 55, 0.8), rgba(212, 175, 55, 0.1)) 1;
+    .bg-gold-gradient-hover {
+      background: linear-gradient(135deg, #FFF0CA 0%, #F7D070 50%, #AA820A 100%);
     }
 
-    /* Glassmorphism Effect */
+    /* Royal Deep Glassmorphism Cards */
     .glass-card {
-      background: rgba(18, 20, 28, 0.65);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(212, 175, 55, 0.25);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      background: rgba(15, 17, 26, 0.55);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(212, 175, 55, 0.05);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .glass-card:hover {
       border-color: rgba(212, 175, 55, 0.6);
-      box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15);
+      box-shadow: 0 30px 60px rgba(212, 175, 55, 0.15), inset 0 0 25px rgba(212, 175, 55, 0.1);
     }
 
-    /* Gold Glow & Neumorphic Elements */
-    .gold-glow {
-      box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
-    }
-
-    .gold-glow-lg {
-      box-shadow: 0 0 50px rgba(212, 175, 55, 0.25);
-    }
-
-    /* Custom Cursor Glow Effect */
-    #cursor-glow {
+    /* Cursor Trail Canvas */
+    #cursor-canvas {
       pointer-events: none;
       position: fixed;
-      width: 400px;
-      height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(0,0,0,0) 70%);
-      transform: translate(-50%, -50%);
-      transition: width 0.3s, height 0.3s;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
       z-index: 9999;
     }
 
-    /* Shimmer Button */
+    /* Shimmering Button */
     .btn-shimmer {
-      background: linear-gradient(90deg, #D4AF37 0%, #FFF0CA 50%, #D4AF37 100%);
+      background: linear-gradient(90deg, #D4AF37 0%, #FFF8E7 50%, #D4AF37 100%);
       background-size: 200% 100%;
       animation: shimmer 3s infinite linear;
+      transition: all 0.3s ease;
+    }
+
+    .btn-shimmer:hover {
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.7);
+      transform: translateY(-2px);
+    }
+
+    /* Decorative Diamond Grid Lines */
+    .bg-grid-pattern {
+      background-image: radial-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* Royal Border Frame Accent */
+    .royal-border {
+      position: relative;
+    }
+    .royal-border::before {
+      content: '';
+      position: absolute;
+      top: -2px; left: -2px; right: -2px; bottom: -2px;
+      background: linear-gradient(45deg, #D4AF37, transparent, #D4AF37);
+      border-radius: inherit;
+      z-index: -1;
+      opacity: 0.3;
+      transition: opacity 0.5s;
+    }
+    .royal-border:hover::before {
+      opacity: 0.8;
     }
   </style>
 </head>
-<body class="relative min-h-screen selection:bg-gold-500 selection:text-black">
+<body class="relative min-h-screen selection:bg-gold-500 selection:text-black bg-obsidian-950 text-gray-200">
 
-  <!-- Interactive Custom Glow Cursor -->
-  <div id="cursor-glow"></div>
+  <!-- Golden Particle Cursor Trail -->
+  <canvas id="cursor-canvas"></canvas>
 
-  <!-- Background Canvas for Interactive Particle Starfield -->
+  <!-- Interactive 3D Starfield & Gold Dust Canvas -->
   <canvas id="particle-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
 
-  <!-- Ambient Golden Light Orbs -->
-  <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-gold-500/10 rounded-full blur-[140px] pointer-events-none z-0"></div>
-  <div class="fixed bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-gold-600/10 rounded-full blur-[160px] pointer-events-none z-0"></div>
+  <!-- Ambient Light Orbs -->
+  <div class="fixed top-[-20%] left-[-10%] w-[700px] h-[700px] bg-gold-500/10 rounded-full blur-[180px] pointer-events-none z-0"></div>
+  <div class="fixed bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-gold-600/10 rounded-full blur-[200px] pointer-events-none z-0"></div>
+
+  <!-- Ambient Audio Controller Toggle -->
+  <button id="sound-toggle" class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full glass-card border-gold-500/40 text-gold-400 flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-2xl group" title="Toggle Soundscape">
+    <i id="sound-icon" class="fa-solid fa-volume-xmark text-lg group-hover:text-gold-300"></i>
+  </button>
+
+  <!-- Overlay Pattern Background -->
+  <div class="fixed inset-0 bg-grid-pattern opacity-40 pointer-events-none z-0"></div>
 
   <!-- Main Container -->
   <div class="relative z-10 flex flex-col min-h-screen">
 
-    <!-- Navigation Bar -->
-    <header class="sticky top-0 z-50 px-6 py-4 transition-all duration-300 backdrop-blur-md border-b border-gold-500/10 bg-obsidian-900/70">
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 px-6 py-5 transition-all duration-500 backdrop-blur-xl border-b border-gold-500/15 bg-obsidian-950/70">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <!-- Logo -->
-        <a href="#" class="flex items-center gap-3 group">
-          <div class="w-10 h-10 rounded-full bg-gold-gradient p-[1px] shadow-lg shadow-gold-500/20 group-hover:scale-105 transition-transform duration-300">
-            <div class="w-full h-full bg-obsidian-900 rounded-full flex items-center justify-center">
-              <i class="fa-solid font-serif text-gold-400 font-bold text-lg">M</i>
+        
+        <!-- Brand Logo -->
+        <a href="#" class="flex items-center gap-4 group">
+          <div class="relative w-11 h-11 rounded-full bg-gold-gradient p-[1px] shadow-xl shadow-gold-500/20 group-hover:scale-105 transition-transform duration-500">
+            <div class="w-full h-full bg-obsidian-950 rounded-full flex items-center justify-center">
+              <i class="fa-solid fa-gem text-gold-400 text-lg group-hover:rotate-45 transition-transform duration-500"></i>
             </div>
           </div>
-          <span class="font-serif text-xl tracking-widest font-semibold text-gold-gradient">MAESTRO</span>
+          <div class="flex flex-col">
+            <span class="font-cinzel text-xl tracking-[0.25em] font-extrabold text-gold-gradient">AUREUS</span>
+            <span class="text-[9px] uppercase tracking-[0.4em] text-gold-400/70 -mt-1 font-sans">Haute Creation</span>
+          </div>
         </a>
 
-        <!-- Desktop Navigation -->
-        <nav class="hidden md:flex items-center gap-8 text-sm tracking-wider font-medium text-gray-300">
-          <a href="#about" class="hover:text-gold-400 transition-colors duration-300">ABOUT</a>
-          <a href="#showcase" class="hover:text-gold-400 transition-colors duration-300">PORTFOLIO</a>
-          <a href="#skills" class="hover:text-gold-400 transition-colors duration-300">CAPABILITIES</a>
-          <a href="#contact" class="hover:text-gold-400 transition-colors duration-300">CONTACT</a>
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-10 text-xs font-semibold tracking-[0.25em] uppercase text-gray-300">
+          <a href="#about" class="hover:text-gold-300 transition-colors duration-300 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-gold-gradient hover:after:w-full after:transition-all">概念 // ABOUT</a>
+          <a href="#achievements" class="hover:text-gold-300 transition-colors duration-300 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-gold-gradient hover:after:w-full after:transition-all">栄誉 // AWARDS</a>
+          <a href="#gallery" class="hover:text-gold-300 transition-colors duration-300 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-gold-gradient hover:after:w-full after:transition-all">画廊 // GALLERY</a>
+          <a href="#experience" class="hover:text-gold-300 transition-colors duration-300 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-gold-gradient hover:after:w-full after:transition-all">軌跡 // CAREER</a>
+          <a href="#contact" class="hover:text-gold-300 transition-colors duration-300 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-gold-gradient hover:after:w-full after:transition-all">謁見 // CONTACT</a>
         </nav>
 
-        <!-- CTA Button -->
-        <a href="#contact" class="hidden sm:inline-block px-6 py-2.5 rounded-full font-semibold text-xs tracking-widest uppercase text-obsidian-900 bg-gold-gradient btn-shimmer hover:shadow-[0_0_20px_rgba(212,175,55,0.6)] transition-all duration-300 transform hover:-translate-y-0.5">
-          Get In Touch
+        <!-- Shimmering Private Consultation Button -->
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-[11px] tracking-[0.2em] uppercase text-obsidian-950 bg-gold-gradient btn-shimmer border border-gold-300/50">
+          <i class="fa-solid fa-crown text-xs"></i>
+          特別依頼
         </a>
 
-        <!-- Mobile Menu Toggle Button -->
+        <!-- Mobile Nav Toggle -->
         <button id="mobile-menu-btn" class="md:hidden text-gold-400 text-2xl focus:outline-none">
           <i class="fa-solid fa-bars-staggered"></i>
         </button>
       </div>
 
-      <!-- Mobile Dropdown Menu -->
-      <div id="mobile-menu" class="hidden md:hidden flex-col gap-4 pt-4 pb-2 px-4 border-t border-gold-500/10 mt-3 text-sm">
-        <a href="#about" class="block text-gray-300 hover:text-gold-400 py-1">ABOUT</a>
-        <a href="#showcase" class="block text-gray-300 hover:text-gold-400 py-1">PORTFOLIO</a>
-        <a href="#skills" class="block text-gray-300 hover:text-gold-400 py-1">CAPABILITIES</a>
-        <a href="#contact" class="block text-gray-300 hover:text-gold-400 py-1">CONTACT</a>
+      <!-- Mobile Dropdown -->
+      <div id="mobile-menu" class="hidden md:hidden flex-col gap-4 pt-6 pb-4 px-4 border-t border-gold-500/10 mt-4 text-xs font-semibold tracking-widest uppercase">
+        <a href="#about" class="text-gray-300 hover:text-gold-400 py-1">概念 // ABOUT</a>
+        <a href="#achievements" class="text-gray-300 hover:text-gold-400 py-1">栄誉 // AWARDS</a>
+        <a href="#gallery" class="text-gray-300 hover:text-gold-400 py-1">画廊 // GALLERY</a>
+        <a href="#experience" class="text-gray-300 hover:text-gold-400 py-1">軌跡 // CAREER</a>
+        <a href="#contact" class="text-gray-300 hover:text-gold-400 py-1">謁見 // CONTACT</a>
       </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-[90vh] flex items-center justify-center px-6 py-20 overflow-hidden">
-      <div class="max-w-5xl mx-auto text-center space-y-8">
+    <!-- Hero Section with Parallax Feeling & High-Fashion Editorial Typography -->
+    <section class="relative min-h-[92vh] flex items-center justify-center px-6 py-24 overflow-hidden">
+      <div class="max-w-5xl mx-auto text-center space-y-10 relative z-10">
         
-        <!-- Status Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-gold-500/30 text-gold-300 text-xs tracking-widest uppercase animate-pulse-slow">
-          <span class="w-2 h-2 rounded-full bg-gold-400 animate-ping"></span>
-          Available for Select Commissions
+        <!-- Status Emblem -->
+        <div class="inline-flex items-center gap-3 px-6 py-2 rounded-full glass-card border-gold-500/40 text-gold-300 text-xs tracking-[0.3em] uppercase animate-pulse-slow">
+          <i class="fa-solid fa-star text-[10px] text-gold-400 animate-spin-slow"></i>
+          <span>至高のデジタル・ハイジュエリーポートフォリオ</span>
+          <i class="fa-solid fa-star text-[10px] text-gold-400 animate-spin-slow"></i>
         </div>
 
-        <!-- Main Title -->
-        <div class="space-y-4">
-          <h1 class="font-serif text-5xl sm:text-7xl lg:text-8xl font-normal tracking-tight text-white leading-tight">
-            Lapis & Gold <br>
-            <span class="italic font-light text-gold-gradient drop-shadow-2xl">Masterpiece</span>
+        <!-- Main Headline -->
+        <div class="space-y-6">
+          <h1 class="font-cinzel text-5xl sm:text-7xl lg:text-9xl font-black tracking-wider text-white leading-tight">
+            ROYAL <br>
+            <span class="font-serif italic font-light text-gold-gradient drop-shadow-[0_10px_35px_rgba(212,175,55,0.4)]">MAESTRO</span>
           </h1>
-          <p class="max-w-2xl mx-auto text-base sm:text-lg text-gray-400 font-light leading-relaxed tracking-wide">
-            Crafting digital experiences with unyielding precision, opulent visual design, and state-of-the-art interactive architecture.
+          <p class="max-w-2xl mx-auto font-serif italic text-lg sm:text-2xl text-gold-100/80 font-light leading-relaxed tracking-wide">
+            「漆黒の美学と黄金の光彩が交差する、唯一無二のデジタル・クリエイション」
           </p>
         </div>
 
         <!-- Hero Buttons -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-5 pt-4">
-          <a href="#showcase" class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-xs tracking-widest uppercase text-obsidian-900 bg-gold-gradient btn-shimmer gold-glow hover:scale-105 transition-all duration-300">
-            Explore Showcase <i class="fa-solid fa-arrow-right-long ml-2"></i>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6">
+          <a href="#gallery" class="w-full sm:w-auto px-10 py-5 rounded-full font-extrabold text-xs tracking-[0.25em] uppercase text-obsidian-950 bg-gold-gradient btn-shimmer border border-gold-200/50 shadow-2xl flex items-center justify-center gap-3">
+            <span>作品を観賞する</span>
+            <i class="fa-solid fa-arrow-right-long text-sm"></i>
           </a>
-          <a href="#about" class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-xs tracking-widest uppercase text-gold-300 glass-card hover:bg-gold-500/10 hover:border-gold-500/60 transition-all duration-300">
-            Discover Story
+          <a href="#about" class="w-full sm:w-auto px-10 py-5 rounded-full font-extrabold text-xs tracking-[0.25em] uppercase text-gold-300 glass-card hover:bg-gold-500/15 hover:border-gold-400 transition-all duration-300 flex items-center justify-center gap-3">
+            <span>哲学に触れる</span>
+            <i class="fa-solid fa-compass text-sm"></i>
           </a>
         </div>
 
         <!-- Scroll Indicator -->
-        <div class="pt-16 animate-float">
-          <a href="#showcase" class="inline-flex flex-col items-center gap-2 text-gold-400/60 hover:text-gold-400 transition-colors">
-            <span class="text-[10px] tracking-widest uppercase">Scroll to Discover</span>
-            <i class="fa-solid fa-chevron-down text-sm"></i>
+        <div class="pt-20 animate-float">
+          <a href="#about" class="inline-flex flex-col items-center gap-3 text-gold-400/60 hover:text-gold-300 transition-colors group">
+            <span class="text-[10px] tracking-[0.4em] uppercase font-cinzel">Scroll to Explore</span>
+            <div class="w-6 h-10 rounded-full border border-gold-500/30 flex items-start justify-center p-1">
+              <div class="w-1.5 h-3 bg-gold-400 rounded-full animate-bounce"></div>
+            </div>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Interactive Showcase Section -->
-    <section id="showcase" class="py-24 px-6 max-w-7xl mx-auto w-full">
+    <!-- Profile & Philosophy Section (About) -->
+    <section id="about" class="py-32 px-6 max-w-7xl mx-auto relative">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Profile Showcase Card (Tilt) -->
+        <div class="lg:col-span-5" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+          <div class="glass-card rounded-3xl p-8 relative overflow-hidden royal-border group">
+            <div class="relative h-96 w-full rounded-2xl overflow-hidden bg-obsidian-900 flex items-center justify-center border border-gold-500/20">
+              <!-- Art Placeholder Visual -->
+              <div class="absolute inset-0 bg-gradient-to-tr from-obsidian-950 via-obsidian-900 to-gold-900/30"></div>
+              <i class="fa-solid fa-user-astronaut text-9xl text-gold-500/20 group-hover:scale-110 group-hover:text-gold-400/40 transition-all duration-700"></i>
+              <div class="absolute bottom-6 left-6 right-6 p-4 glass-card rounded-xl border-gold-500/30">
+                <span class="text-[10px] uppercase tracking-[0.3em] text-gold-400 font-cinzel">Founder & Executive Director</span>
+                <h3 class="font-serif text-2xl text-white font-semibold">神谷 玲央奈 / Reona Kamiya</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text Bio Content -->
+        <div class="lg:col-span-7 space-y-8">
+          <div class="space-y-3">
+            <span class="text-xs font-extrabold uppercase tracking-[0.4em] text-gold-400 font-cinzel">Philosophy & Artistry</span>
+            <h2 class="font-cinzel text-4xl sm:text-5xl text-white font-bold leading-tight">
+              細部に宿る神宿る <br>
+              <span class="font-serif italic font-normal text-gold-gradient">完璧という名の芸術</span>
+            </h2>
+            <div class="w-20 h-[2px] bg-gold-gradient mt-4"></div>
+          </div>
+
+          <p class="text-gray-300 font-serif text-lg leading-relaxed font-light">
+            テクノロジーとラグジュアリーファッションの境界線を融合させ、Web空間における「邸宅」を構築します。視覚的なエレガンス、計算し尽くされたインタラクション、そして官能的な操作感。すべてはクライアントのアイデンティティを至高の領域へと引き上げるために。
+          </p>
+
+          <!-- Core Stat Highlights -->
+          <div class="grid grid-cols-3 gap-6 pt-6 border-t border-gold-500/15">
+            <div class="space-y-1">
+              <span class="font-cinzel text-3xl font-extrabold text-gold-gradient">100%</span>
+              <p class="text-[11px] uppercase tracking-wider text-gray-400">Custom Crafted</p>
+            </div>
+            <div class="space-y-1">
+              <span class="font-cinzel text-3xl font-extrabold text-gold-gradient">24K</span>
+              <p class="text-[11px] uppercase tracking-wider text-gray-400">Golden Precision</p>
+            </div>
+            <div class="space-y-1">
+              <span class="font-cinzel text-3xl font-extrabold text-gold-gradient">Global</span>
+              <p class="text-[11px] uppercase tracking-wider text-gray-400">Clientele Base</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Achievements / Awards Showcase Section -->
+    <section id="achievements" class="py-28 px-6 bg-obsidian-900/60 border-y border-gold-500/15 relative">
+      <div class="max-w-7xl mx-auto space-y-16">
+        
+        <!-- Title -->
+        <div class="text-center space-y-3">
+          <span class="text-xs font-extrabold uppercase tracking-[0.4em] text-gold-400 font-cinzel">Honors & Recognition</span>
+          <h2 class="font-cinzel text-4xl sm:text-5xl text-white font-bold">栄誉と実績</h2>
+          <div class="w-24 h-[1px] bg-gold-gradient mx-auto mt-2"></div>
+        </div>
+
+        <!-- Awards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Award 1 -->
+          <div class="glass-card p-8 rounded-2xl space-y-4 hover:border-gold-400 transition-all duration-500 relative group" data-tilt>
+            <div class="w-14 h-14 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-2xl group-hover:bg-gold-gradient group-hover:text-obsidian-950 transition-all duration-500">
+              <i class="fa-solid fa-trophy"></i>
+            </div>
+            <span class="text-xs font-mono text-gold-400">2026 ANNUAL</span>
+            <h3 class="font-serif text-2xl text-white font-semibold">International Luxury Design Award</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">最優秀デジタルアーキテクチャ部門グランプリ受章。</p>
+          </div>
+
+          <!-- Award 2 -->
+          <div class="glass-card p-8 rounded-2xl space-y-4 hover:border-gold-400 transition-all duration-500 relative group" data-tilt>
+            <div class="w-14 h-14 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-2xl group-hover:bg-gold-gradient group-hover:text-obsidian-950 transition-all duration-500">
+              <i class="fa-solid fa-award"></i>
+            </div>
+            <span class="text-xs font-mono text-gold-400">2025 WINTER</span>
+            <h3 class="font-serif text-2xl text-white font-semibold">Haute Couture Digital Portal</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">ハイジュエリーブランドの最高峰Web体験としての特許水準評価。</p>
+          </div>
+
+          <!-- Award 3 -->
+          <div class="glass-card p-8 rounded-2xl space-y-4 hover:border-gold-400 transition-all duration-500 relative group" data-tilt>
+            <div class="w-14 h-14 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-2xl group-hover:bg-gold-gradient group-hover:text-obsidian-950 transition-all duration-500">
+              <i class="fa-solid fa-crown"></i>
+            </div>
+            <span class="text-xs font-mono text-gold-400">2024 AUTUMN</span>
+            <h3 class="font-serif text-2xl text-white font-semibold">A' Design Master Award</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">革新的なUI/UXと3Dインタラクションテクノロジーの世界的融合。</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Luxury Gallery Showcase Section (With Filter & Lightbox) -->
+    <section id="gallery" class="py-32 px-6 max-w-7xl mx-auto w-full">
       
-      <!-- Section Title -->
-      <div class="flex flex-col items-center text-center mb-16 space-y-3">
-        <span class="text-xs font-semibold uppercase tracking-widest text-gold-500">Curated Works</span>
-        <h2 class="font-serif text-4xl sm:text-5xl text-white">Interactive Gallery</h2>
-        <div class="w-24 h-[1px] bg-gold-gradient mt-2"></div>
+      <div class="flex flex-col items-center text-center space-y-4 mb-16">
+        <span class="text-xs font-extrabold uppercase tracking-[0.4em] text-gold-400 font-cinzel">Curated Masterpieces</span>
+        <h2 class="font-cinzel text-4xl sm:text-5xl text-white font-bold">作品画廊</h2>
+        <div class="w-24 h-[1px] bg-gold-gradient"></div>
       </div>
 
-      <!-- Filter Tabs -->
-      <div class="flex justify-center gap-3 mb-12 flex-wrap" id="gallery-tabs">
-        <button data-filter="all" class="tab-btn px-6 py-2.5 rounded-full text-xs tracking-wider uppercase font-semibold transition-all duration-300 bg-gold-gradient text-obsidian-900 shadow-md">All Works</button>
-        <button data-filter="design" class="tab-btn px-6 py-2.5 rounded-full text-xs tracking-wider uppercase font-semibold transition-all duration-300 glass-card text-gray-400 hover:text-gold-300">Luxury Design</button>
-        <button data-filter="dev" class="tab-btn px-6 py-2.5 rounded-full text-xs tracking-wider uppercase font-semibold transition-all duration-300 glass-card text-gray-400 hover:text-gold-300">Architecture</button>
-        <button data-filter="3d" class="tab-btn px-6 py-2.5 rounded-full text-xs tracking-wider uppercase font-semibold transition-all duration-300 glass-card text-gray-400 hover:text-gold-300">3D Interactive</button>
+      <!-- Category Filters -->
+      <div class="flex justify-center gap-4 mb-14 flex-wrap" id="gallery-tabs">
+        <button data-filter="all" class="tab-btn px-7 py-3 rounded-full text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 bg-gold-gradient text-obsidian-950 shadow-lg">全て</button>
+        <button data-filter="horology" class="tab-btn px-7 py-3 rounded-full text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 glass-card text-gray-300 hover:text-gold-300">高級時計 // Horology</button>
+        <button data-filter="mansion" class="tab-btn px-7 py-3 rounded-full text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 glass-card text-gray-300 hover:text-gold-300">建築 // Estates</button>
+        <button data-filter="yacht" class="tab-btn px-7 py-3 rounded-full text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 glass-card text-gray-300 hover:text-gold-300">モビリティ // Mobility</button>
       </div>
 
-      <!-- Showcase Grid -->
+      <!-- Gallery Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid">
 
         <!-- Showcase Item 1 -->
-        <div class="gallery-item design glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-500 flex flex-col" data-title="Aetherium Watch Suite" data-desc="A ultra-high precision luxury smartwatch companion application designed with obsidian and gold aesthetics." data-tag="Luxury UI/UX">
-          <div class="relative h-64 overflow-hidden bg-obsidian-800">
-            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-900 via-transparent to-transparent z-10"></div>
-            <!-- Decorative SVG Placeholder Art -->
-            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-obsidian-700 to-obsidian-900 group-hover:scale-110 transition-transform duration-700">
-              <i class="fa-solid fa-clock text-7xl text-gold-500/30 group-hover:text-gold-400/60 transition-colors duration-500"></i>
+        <div class="gallery-item horology glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-500 flex flex-col" data-title="Aetherium Tourbillon 3D" data-desc="トゥールビヨン機構をリアルタイム3Dで完全に再現したインタラクティブ・クロノグラフ・ポータル。" data-tag="Luxury Watch Architecture">
+          <div class="relative h-72 overflow-hidden bg-obsidian-900">
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-transparent to-transparent z-10"></div>
+            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-obsidian-800 to-obsidian-950 group-hover:scale-110 transition-transform duration-700">
+              <i class="fa-solid fa-clock text-8xl text-gold-500/20 group-hover:text-gold-400/60 transition-colors duration-500"></i>
             </div>
-            <span class="absolute top-4 left-4 z-20 text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full bg-obsidian-900/80 border border-gold-500/30 text-gold-300">Design</span>
+            <span class="absolute top-4 left-4 z-20 text-[9px] uppercase font-bold tracking-[0.2em] px-3 py-1 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-300 font-cinzel">Horology</span>
           </div>
-          <div class="p-6 flex flex-col flex-grow justify-between">
+          <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
             <div>
-              <h3 class="font-serif text-2xl text-white group-hover:text-gold-300 transition-colors mb-2">Aetherium Chrono</h3>
-              <p class="text-sm text-gray-400 leading-relaxed">High-end watch configuration platform with real-time 3D rendering interactions.</p>
+              <h3 class="font-serif text-2xl text-white group-hover:text-gold-300 transition-colors">Aetherium Tourbillon</h3>
+              <p class="text-xs text-gray-400 leading-relaxed mt-2">至高の金細工と機械式時計の小宇宙を、ブラウザ上で体験するWebアプリケーション。</p>
             </div>
-            <div class="pt-6 flex justify-between items-center border-t border-gold-500/10 mt-6">
-              <span class="text-xs text-gold-500 font-mono">#01 / LUXURY</span>
-              <button class="open-modal-btn w-9 h-9 rounded-full bg-gold-500/10 hover:bg-gold-gradient text-gold-400 hover:text-obsidian-900 flex items-center justify-center transition-all duration-300">
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            <div class="pt-4 flex justify-between items-center border-t border-gold-500/15">
+              <span class="text-xs text-gold-400 font-mono">NO. 01</span>
+              <button class="open-modal-btn w-10 h-10 rounded-full bg-gold-500/10 hover:bg-gold-gradient text-gold-400 hover:text-obsidian-950 flex items-center justify-center transition-all duration-300">
+                <i class="fa-solid fa-expand text-xs"></i>
               </button>
             </div>
           </div>
         </div>
 
         <!-- Showcase Item 2 -->
-        <div class="gallery-item dev glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-500 flex flex-col" data-title="Royal Vault Platform" data-desc="Fintech dashboard tailored for private banking clients with multi-layer encryption and bespoke analytics." data-tag="Web Architecture">
-          <div class="relative h-64 overflow-hidden bg-obsidian-800">
-            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-900 via-transparent to-transparent z-10"></div>
-            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-obsidian-700 to-obsidian-900 group-hover:scale-110 transition-transform duration-700">
-              <i class="fa-solid fa-vault text-7xl text-gold-500/30 group-hover:text-gold-400/60 transition-colors duration-500"></i>
+        <div class="gallery-item mansion glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-500 flex flex-col" data-title="Royal Sovereign Estate" data-desc="モナコに位置する極上レジデンスのためのデジタルVIPサロン。プライベート内覧用インタラクティブモデル。" data-tag="Private Estate Portal">
+          <div class="relative h-72 overflow-hidden bg-obsidian-900">
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-transparent to-transparent z-10"></div>
+            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-obsidian-800 to-obsidian-950 group-hover:scale-110 transition-transform duration-700">
+              <i class="fa-solid fa-building-columns text-8xl text-gold-500/20 group-hover:text-gold-400/60 transition-colors duration-500"></i>
             </div>
-            <span class="absolute top-4 left-4 z-20 text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full bg-obsidian-900/80 border border-gold-500/30 text-gold-300">Architecture</span>
+            <span class="absolute top-4 left-4 z-20 text-[9px] uppercase font-bold tracking-[0.2em] px-3 py-1 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-300 font-cinzel">Estates</span>
           </div>
-          <div class="p-6 flex flex-col flex-grow justify-between">
+          <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
             <div>
-              <h3 class="font-serif text-2xl text-white group-hover:text-gold-300 transition-colors mb-2">Royal Sovereign Vault</h3>
-              <p class="text-sm text-gray-400 leading-relaxed">Next-generation asset management interface built for seamless high-value transactions.</p>
+              <h3 class="font-serif text-2xl text-white group-hover:text-gold-300 transition-colors">Sovereign Estate</h3>
+              <p class="text-xs text-gray-400 leading-relaxed mt-2">暗号化認証を用いた超富裕層向けプライベート不動産ショールーム。</p>
             </div>
-            <div class="pt-6 flex justify-between items-center border-t border-gold-500/10 mt-6">
-              <span class="text-xs text-gold-500 font-mono">#02 / FINTECH</span>
-              <button class="open-modal-btn w-9 h-9 rounded-full bg-gold-500/10 hover:bg-gold-gradient text-gold-400 hover:text-obsidian-900 flex items-center justify-center transition-all duration-300">
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            <div class="pt-4 flex justify-between items-center border-t border-gold-500/15">
+              <span class="text-xs text-gold-400 font-mono">NO. 02</span>
+              <button class="open-modal-btn w-10 h-10 rounded-full bg-gold-500/10 hover:bg-gold-gradient text-gold-400 hover:text-obsidian-950 flex items-center justify-center transition-all duration-300">
+                <i class="fa-solid fa-expand text-xs"></i>
               </button>
             </div>
           </div>
         </div>
 
         <!-- Showcase Item 3 -->
-        <div class="gallery-item 3d glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-500 flex flex-col" data-title="Celestial Sphere 3D" data-desc="Interactive WebGL astronomical map displaying celestial coordinates with golden constellation lines." data-tag="3D Experience">
-          <div class="relative h-64 overflow-hidden bg-obsidian-800">
-            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-900 via-transparent to-transparent z-10"></div>
-            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-obsidian-700 to-obsidian-900 group-hover:scale-110 transition-transform duration-700">
-              <i class="fa-solid fa-atom text-7xl text-gold-500/30 group-hover:text-gold-400/60 transition-colors duration-500"></i>
+        <div class="gallery-item yacht glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-500 flex flex-col" data-title="Celestial Superyacht Experience" data-desc="80メートルのカスタムスーパーヨットをコンフィギュレーションできる高級Web体験。" data-tag="Superyacht Customizer">
+          <div class="relative h-72 overflow-hidden bg-obsidian-900">
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-transparent to-transparent z-10"></div>
+            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-obsidian-800 to-obsidian-950 group-hover:scale-110 transition-transform duration-700">
+              <i class="fa-solid fa-ship text-8xl text-gold-500/20 group-hover:text-gold-400/60 transition-colors duration-500"></i>
             </div>
-            <span class="absolute top-4 left-4 z-20 text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full bg-obsidian-900/80 border border-gold-500/30 text-gold-300">3D WebGL</span>
+            <span class="absolute top-4 left-4 z-20 text-[9px] uppercase font-bold tracking-[0.2em] px-3 py-1 rounded-full bg-obsidian-950/80 border border-gold-500/40 text-gold-300 font-cinzel">Mobility</span>
           </div>
-          <div class="p-6 flex flex-col flex-grow justify-between">
+          <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
             <div>
-              <h3 class="font-serif text-2xl text-white group-hover:text-gold-300 transition-colors mb-2">Celestial Cosmos</h3>
-              <p class="text-sm text-gray-400 leading-relaxed">Immersive 3D star map utilizing WebGL lighting models and shader physics.</p>
+              <h3 class="font-serif text-2xl text-white group-hover:text-gold-300 transition-colors">Celestial Superyacht</h3>
+              <p class="text-xs text-gray-400 leading-relaxed mt-2">内装レザーやメタルのマテリアルをリアルタイムに変更可能なラグジュアリーコンフィギュレータ。</p>
             </div>
-            <div class="pt-6 flex justify-between items-center border-t border-gold-500/10 mt-6">
-              <span class="text-xs text-gold-500 font-mono">#03 / WEBGL</span>
-              <button class="open-modal-btn w-9 h-9 rounded-full bg-gold-500/10 hover:bg-gold-gradient text-gold-400 hover:text-obsidian-900 flex items-center justify-center transition-all duration-300">
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            <div class="pt-4 flex justify-between items-center border-t border-gold-500/15">
+              <span class="text-xs text-gold-400 font-mono">NO. 03</span>
+              <button class="open-modal-btn w-10 h-10 rounded-full bg-gold-500/10 hover:bg-gold-gradient text-gold-400 hover:text-obsidian-950 flex items-center justify-center transition-all duration-300">
+                <i class="fa-solid fa-expand text-xs"></i>
               </button>
             </div>
           </div>
         </div>
 
       </div>
+
     </section>
 
-    <!-- Capabilities / Skills Section -->
-    <section id="skills" class="py-24 px-6 bg-obsidian-900/50 border-y border-gold-500/10">
-      <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col items-center text-center mb-16 space-y-3">
-          <span class="text-xs font-semibold uppercase tracking-widest text-gold-500">Excellence & Skill</span>
-          <h2 class="font-serif text-4xl sm:text-5xl text-white">Mastered Capabilities</h2>
-          <div class="w-24 h-[1px] bg-gold-gradient mt-2"></div>
+    <!-- Experience Timeline Section -->
+    <section id="experience" class="py-32 px-6 bg-obsidian-900/50 border-t border-gold-500/15">
+      <div class="max-w-4xl mx-auto space-y-16">
+        
+        <div class="text-center space-y-3">
+          <span class="text-xs font-extrabold uppercase tracking-[0.4em] text-gold-400 font-cinzel">Career History</span>
+          <h2 class="font-cinzel text-4xl sm:text-5xl text-white font-bold">歩みと軌跡</h2>
+          <div class="w-24 h-[1px] bg-gold-gradient mx-auto mt-2"></div>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-          <!-- Skill Badge 1 -->
-          <div class="glass-card p-6 rounded-xl flex flex-col items-center text-center space-y-3 hover:border-gold-400 transition-all duration-300 group">
-            <div class="w-14 h-14 rounded-full bg-gold-500/10 flex items-center justify-center text-gold-400 text-2xl group-hover:scale-110 group-hover:bg-gold-gradient group-hover:text-obsidian-900 transition-all duration-300">
-              <i class="fa-solid fa-pen-nib"></i>
-            </div>
-            <h3 class="font-serif text-lg text-white group-hover:text-gold-300">UI/UX Design</h3>
-            <p class="text-xs text-gray-400">Bespoke Design Systems</p>
+        <!-- Vertical Timeline -->
+        <div class="relative border-l border-gold-500/30 pl-8 ml-4 sm:ml-12 space-y-12">
+          
+          <!-- Timeline Item 1 -->
+          <div class="relative group">
+            <div class="absolute -left-[41px] top-0 w-5 h-5 rounded-full bg-gold-gradient border-4 border-obsidian-950 shadow-lg group-hover:scale-125 transition-transform"></div>
+            <span class="text-xs font-mono text-gold-400 font-bold">2023 - PRESENT</span>
+            <h3 class="font-serif text-2xl text-white font-semibold mt-1">Aureus Haute Digital / 代表兼クリエイティブディレクター</h3>
+            <p class="text-xs text-gray-400 leading-relaxed mt-2">世界のラグジュアリーブランドを対象としたデジタルブランディング及び3Dインターフェースの設計指揮。</p>
           </div>
 
-          <!-- Skill Badge 2 -->
-          <div class="glass-card p-6 rounded-xl flex flex-col items-center text-center space-y-3 hover:border-gold-400 transition-all duration-300 group">
-            <div class="w-14 h-14 rounded-full bg-gold-500/10 flex items-center justify-center text-gold-400 text-2xl group-hover:scale-110 group-hover:bg-gold-gradient group-hover:text-obsidian-900 transition-all duration-300">
-              <i class="fa-code fa-solid"></i>
-            </div>
-            <h3 class="font-serif text-lg text-white group-hover:text-gold-300">Frontend Dev</h3>
-            <p class="text-xs text-gray-400">Tailwind & React Core</p>
+          <!-- Timeline Item 2 -->
+          <div class="relative group">
+            <div class="absolute -left-[41px] top-0 w-5 h-5 rounded-full bg-obsidian-800 border-2 border-gold-400 shadow-lg group-hover:scale-125 transition-transform"></div>
+            <span class="text-xs font-mono text-gold-400/80 font-bold">2020 - 2023</span>
+            <h3 class="font-serif text-2xl text-white font-semibold mt-1">Maison De Luxe / Lead Interactive Designer</h3>
+            <p class="text-xs text-gray-400 leading-relaxed mt-2">パリと東京を拠点に、オートクチュール・ファッションショーのインタラクティブ特設サイトをプロデュース。</p>
           </div>
 
-          <!-- Skill Badge 3 -->
-          <div class="glass-card p-6 rounded-xl flex flex-col items-center text-center space-y-3 hover:border-gold-400 transition-all duration-300 group">
-            <div class="w-14 h-14 rounded-full bg-gold-500/10 flex items-center justify-center text-gold-400 text-2xl group-hover:scale-110 group-hover:bg-gold-gradient group-hover:text-obsidian-900 transition-all duration-300">
-              <i class="fa-cube fa-solid"></i>
-            </div>
-            <h3 class="font-serif text-lg text-white group-hover:text-gold-300">3D Shader & WebGL</h3>
-            <p class="text-xs text-gray-400">Three.js Animations</p>
+          <!-- Timeline Item 3 -->
+          <div class="relative group">
+            <div class="absolute -left-[41px] top-0 w-5 h-5 rounded-full bg-obsidian-800 border-2 border-gold-400/50 shadow-lg group-hover:scale-125 transition-transform"></div>
+            <span class="text-xs font-mono text-gold-400/60 font-bold">2017 - 2020</span>
+            <h3 class="font-serif text-2xl text-white font-semibold mt-1">Atelier Gold & Code / Principal Developer</h3>
+            <p class="text-xs text-gray-400 leading-relaxed mt-2">WebGLおよび3D物理シミュレーションエンジンの研究開発に従事。</p>
           </div>
 
-          <!-- Skill Badge 4 -->
-          <div class="glass-card p-6 rounded-xl flex flex-col items-center text-center space-y-3 hover:border-gold-400 transition-all duration-300 group">
-            <div class="w-14 h-14 rounded-full bg-gold-500/10 flex items-center justify-center text-gold-400 text-2xl group-hover:scale-110 group-hover:bg-gold-gradient group-hover:text-obsidian-900 transition-all duration-300">
-              <i class="fa-bolt fa-solid"></i>
-            </div>
-            <h3 class="font-serif text-lg text-white group-hover:text-gold-300">Performance</h3>
-            <p class="text-xs text-gray-400">Ultra-fast Optimization</p>
-          </div>
         </div>
+
       </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 px-6 max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <!-- Visual Accent -->
-        <div class="relative flex justify-center">
-          <div class="w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-gold-600/20 to-obsidian-700 border border-gold-500/30 flex items-center justify-center gold-glow">
-            <div class="w-60 h-60 sm:w-80 sm:h-80 rounded-full border border-gold-400/40 flex items-center justify-center p-8 text-center glass-card">
-              <div class="space-y-3">
-                <i class="fa-solid fa-crown text-4xl text-gold-400 animate-pulse"></i>
-                <h3 class="font-serif text-xl text-white">Uncompromising Quality</h3>
-                <p class="text-xs text-gray-400">Redefining high-end web experiences with precision craftsmanship.</p>
-              </div>
-            </div>
-          </div>
+    <!-- Luxury Interactive Contact Form Section -->
+    <section id="contact" class="py-32 px-6 max-w-4xl mx-auto w-full relative">
+      <div class="glass-card rounded-3xl p-8 sm:p-14 space-y-10 royal-border relative">
+        
+        <div class="text-center space-y-3">
+          <span class="text-xs font-extrabold uppercase tracking-[0.4em] text-gold-400 font-cinzel">Private Commission</span>
+          <h2 class="font-cinzel text-4xl sm:text-5xl text-white font-bold">特別謁見・ご相談</h2>
+          <p class="text-xs text-gray-400 max-w-lg mx-auto font-serif">厳選されたプロジェクトのみをお受けしております。詳細をご記入の上、送信してください。</p>
         </div>
 
-        <!-- Text Description -->
-        <div class="space-y-6">
-          <span class="text-xs font-semibold uppercase tracking-widest text-gold-500">About The Mastermind</span>
-          <h2 class="font-serif text-4xl sm:text-5xl text-white leading-tight">Sculpting Gold Out Of Digital Noise</h2>
-          <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
-            Welcome to a showcase designed with meticulous care. Every line of code, pixel alignment, and color choices reflect a deep devotion to elegance and functional perfection.
-          </p>
-          <div class="grid grid-cols-2 gap-6 pt-4">
-            <div class="border-l-2 border-gold-500 pl-4">
-              <h4 class="font-serif text-2xl text-gold-300">100%</h4>
-              <p class="text-xs text-gray-400 uppercase tracking-wider">Precision Focused</p>
+        <form id="contact-form" class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <label class="text-[10px] uppercase font-bold tracking-[0.2em] text-gold-300 font-cinzel">貴名 / Name</label>
+              <input type="text" required placeholder="例: 貴族 太郎" class="w-full bg-obsidian-950/80 border border-gold-500/20 rounded-xl px-5 py-4 text-sm text-white focus:outline-none focus:border-gold-400 transition-colors">
             </div>
-            <div class="border-l-2 border-gold-500 pl-4">
-              <h4 class="font-serif text-2xl text-gold-300">24K</h4>
-              <p class="text-xs text-gray-400 uppercase tracking-wider">Aesthetic Standard</p>
+            <div class="space-y-2">
+              <label class="text-[10px] uppercase font-bold tracking-[0.2em] text-gold-300 font-cinzel">電子郵便 / Email</label>
+              <input type="email" required placeholder="vip@maison.com" class="w-full bg-obsidian-950/80 border border-gold-500/20 rounded-xl px-5 py-4 text-sm text-white focus:outline-none focus:border-gold-400 transition-colors">
             </div>
           </div>
+
+          <div class="space-y-2">
+            <label class="text-[10px] uppercase font-bold tracking-[0.2em] text-gold-300 font-cinzel">ご予算規模 / Budget Tier</label>
+            <select class="w-full bg-obsidian-950/80 border border-gold-500/20 rounded-xl px-5 py-4 text-sm text-gray-300 focus:outline-none focus:border-gold-400 transition-colors">
+              <option>¥5,000,000 - ¥10,000,000 (Standard Luxury)</option>
+              <option>¥10,000,000 - ¥30,000,000 (Haute Couture)</option>
+              <option>¥30,000,000+ (Imperial Custom)</option>
+            </select>
+          </div>
+
+          <div class="space-y-2">
+            <label class="text-[10px] uppercase font-bold tracking-[0.2em] text-gold-300 font-cinzel">ご依頼内容 / Message</label>
+            <textarea rows="4" required placeholder="プロジェクトの概要や構想をお聞かせください..." class="w-full bg-obsidian-950/80 border border-gold-500/20 rounded-xl px-5 py-4 text-sm text-white focus:outline-none focus:border-gold-400 transition-colors"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-5 rounded-xl font-bold text-xs tracking-[0.3em] uppercase text-obsidian-950 bg-gold-gradient btn-shimmer shadow-2xl flex items-center justify-center gap-3">
+            <i class="fa-solid fa-paper-plane text-xs"></i>
+            <span>謁見リクエストを送信する</span>
+          </button>
+        </form>
+
+        <!-- Form Success Alert Overlay (Hidden by Default) -->
+        <div id="form-success" class="hidden absolute inset-0 bg-obsidian-950/95 backdrop-blur-md rounded-3xl p-8 flex flex-col items-center justify-center text-center space-y-6">
+          <div class="w-20 h-20 rounded-full bg-gold-500/20 border border-gold-400 text-gold-400 flex items-center justify-center text-4xl animate-bounce">
+            <i class="fa-solid fa-crown"></i>
+          </div>
+          <h3 class="font-cinzel text-3xl text-white font-bold">リクエストを承りました</h3>
+          <p class="text-sm text-gray-300 max-w-md font-serif">ご送信ありがとうございます。専任コンシェルジュより48時間以内に特別にご案内申し上げます。</p>
+          <button id="reset-form-btn" class="px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest text-gold-300 border border-gold-500/40 hover:bg-gold-500/10">
+            閉じる
+          </button>
         </div>
+
       </div>
     </section>
 
-    <!-- Contact / Footer Section -->
-    <footer id="contact" class="mt-auto bg-obsidian-900 border-t border-gold-500/20 py-16 px-6">
+    <!-- Footer -->
+    <footer class="mt-auto bg-obsidian-950 border-t border-gold-500/20 py-16 px-6">
       <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+        
         <div class="space-y-2 text-center md:text-left">
-          <h3 class="font-serif text-2xl text-gold-gradient">Lapis & Gold Studio</h3>
-          <p class="text-xs text-gray-400">© 2026 Maestro Portfolio. All Rights Reserved.</p>
+          <span class="font-cinzel text-2xl tracking-widest font-bold text-gold-gradient">AUREUS MAESTRO</span>
+          <p class="text-xs text-gray-500">© 2026 AUREUS HAUTE CREATION. ALL RIGHTS RESERVED.</p>
         </div>
 
-        <!-- Social Icons -->
+        <!-- Social Channels -->
         <div class="flex gap-4">
-          <a href="#" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-gold-400 hover:bg-gold-gradient hover:text-obsidian-900 transition-all duration-300">
-            <i class="fa-brands fa-github text-base"></i>
+          <a href="#" class="w-11 h-11 rounded-full glass-card flex items-center justify-center text-gold-400 hover:bg-gold-gradient hover:text-obsidian-950 transition-all duration-300">
+            <i class="fa-brands fa-instagram text-base"></i>
           </a>
-          <a href="#" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-gold-400 hover:bg-gold-gradient hover:text-obsidian-900 transition-all duration-300">
+          <a href="#" class="w-11 h-11 rounded-full glass-card flex items-center justify-center text-gold-400 hover:bg-gold-gradient hover:text-obsidian-950 transition-all duration-300">
             <i class="fa-brands fa-x-twitter text-base"></i>
           </a>
-          <a href="#" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-gold-400 hover:bg-gold-gradient hover:text-obsidian-900 transition-all duration-300">
+          <a href="#" class="w-11 h-11 rounded-full glass-card flex items-center justify-center text-gold-400 hover:bg-gold-gradient hover:text-obsidian-950 transition-all duration-300">
             <i class="fa-brands fa-linkedin-in text-base"></i>
           </a>
         </div>
+
       </div>
     </footer>
 
   </div>
 
-  <!-- Interactive Modal Showcase -->
-  <div id="modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-6 opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="glass-card max-w-xl w-full p-8 rounded-2xl relative border-gold-500/40 text-center space-y-6 transform scale-95 transition-transform duration-300" id="modal-card">
-      <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gold-400 text-xl">
+  <!-- Interactive Lightbox Modal -->
+  <div id="modal" class="fixed inset-0 bg-black/90 backdrop-blur-xl z-50 flex items-center justify-center p-6 opacity-0 pointer-events-none transition-opacity duration-500">
+    <div class="glass-card max-w-2xl w-full p-10 rounded-3xl relative border-gold-500/40 text-center space-y-6 transform scale-95 transition-transform duration-500 royal-border" id="modal-card">
+      <button id="close-modal-btn" class="absolute top-6 right-6 text-gray-400 hover:text-gold-300 text-2xl transition-colors">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <div class="w-16 h-16 rounded-full bg-gold-500/10 text-gold-400 flex items-center justify-center text-3xl mx-auto">
+      <div class="w-16 h-16 rounded-full bg-gold-500/10 text-gold-400 flex items-center justify-center text-3xl mx-auto border border-gold-500/30">
         <i class="fa-solid fa-gem"></i>
       </div>
-      <h3 id="modal-title" class="font-serif text-3xl text-white">Project Title</h3>
-      <span id="modal-tag" class="inline-block text-xs uppercase tracking-widest text-gold-400 bg-gold-500/10 px-3 py-1 rounded-full border border-gold-500/30">Tag</span>
-      <p id="modal-desc" class="text-sm text-gray-300 leading-relaxed">Detailed project description goes here.</p>
-      <div class="pt-4">
-        <button id="modal-action-btn" class="px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest text-obsidian-900 bg-gold-gradient btn-shimmer w-full">
-          Launch Experience
+      <h3 id="modal-title" class="font-cinzel text-3xl text-white font-bold">Project Title</h3>
+      <span id="modal-tag" class="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-gold-300 bg-gold-500/10 px-4 py-1.5 rounded-full border border-gold-500/30">Tag</span>
+      <p id="modal-desc" class="text-sm text-gray-300 font-serif leading-relaxed">Detailed project description goes here.</p>
+      <div class="pt-6">
+        <button id="modal-action-btn" class="px-8 py-4 rounded-full text-xs font-bold uppercase tracking-[0.25em] text-obsidian-950 bg-gold-gradient btn-shimmer w-full">
+          作品体験をリクエストする
         </button>
       </div>
     </div>
   </div>
 
-  <!-- JavaScript Logic -->
+  <!-- JavaScript Interactions & WebGL Physics Particle Engines -->
   <script>
-    // Particle Starfield Background Animation
-    const canvas = document.getElementById('particle-canvas');
-    const ctx = canvas.getContext('2d');
+    // Audio Soundscape Simulation (Web Audio API Synthesizer)
+    let audioCtx = null;
+    let isPlayingSound = false;
+    let osc = null;
+
+    const soundToggle = document.getElementById('sound-toggle');
+    const soundIcon = document.getElementById('sound-icon');
+
+    soundToggle.addEventListener('click', () => {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+
+      if (!isPlayingSound) {
+        // Play Ambient Drone Tone
+        osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(110, audioCtx.currentTime); // Low A note drone
+        gain.gain.setValueAtTime(0.02, audioCtx.currentTime);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+
+        soundIcon.classList.remove('fa-volume-xmark');
+        soundIcon.classList.add('fa-volume-high');
+        isPlayingSound = true;
+      } else {
+        if (osc) osc.stop();
+        soundIcon.classList.remove('fa-volume-high');
+        soundIcon.classList.add('fa-volume-xmark');
+        isPlayingSound = false;
+      }
+    });
+
+    // 1. Interactive 3D Gold Dust Background Canvas Engine
+    const pCanvas = document.getElementById('particle-canvas');
+    const pCtx = pCanvas.getContext('2d');
     let particles = [];
 
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    function resizePCanvas() {
+      pCanvas.width = window.innerWidth;
+      pCanvas.height = window.innerHeight;
     }
-
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
+    window.addEventListener('resize', resizePCanvas);
+    resizePCanvas();
 
     class Particle {
       constructor() {
         this.reset();
       }
       reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 0.5;
-        this.speedX = (Math.random() - 0.5) * 0.3;
-        this.speedY = (Math.random() - 0.5) * 0.3;
-        this.alpha = Math.random() * 0.7 + 0.2;
+        this.x = Math.random() * pCanvas.width;
+        this.y = Math.random() * pCanvas.height;
+        this.size = Math.random() * 2.5 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.4;
+        this.speedY = (Math.random() - 0.5) * 0.4;
+        this.alpha = Math.random() * 0.6 + 0.1;
+        this.sparkleSpeed = Math.random() * 0.02 + 0.005;
       }
       update() {
         this.x += this.speedX;
         this.y += this.speedY;
+        this.alpha += Math.sin(Date.now() * this.sparkleSpeed) * 0.01;
 
-        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+        if (this.x < 0 || this.x > pCanvas.width || this.y < 0 || this.y > pCanvas.height) {
           this.reset();
         }
       }
       draw() {
-        ctx.fillStyle = `rgba(212, 175, 55, ${this.alpha})`;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
+        pCtx.fillStyle = `rgba(212, 175, 55, ${Math.max(0, Math.min(1, this.alpha))})`;
+        pCtx.beginPath();
+        pCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        pCtx.fill();
       }
     }
 
-    for (let i = 0; i < 70; i++) {
+    for (let i = 0; i < 90; i++) {
       particles.push(new Particle());
     }
 
     function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
       particles.forEach(p => {
         p.update();
         p.draw();
@@ -522,12 +736,52 @@
     }
     animateParticles();
 
-    // Custom Glowing Cursor Follower
-    const cursorGlow = document.getElementById('cursor-glow');
+    // 2. Dynamic Gold Sparkle Cursor Trail Engine
+    const cCanvas = document.getElementById('cursor-canvas');
+    const cCtx = cCanvas.getContext('2d');
+    let trail = [];
+
+    function resizeCCanvas() {
+      cCanvas.width = window.innerWidth;
+      cCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCCanvas);
+    resizeCCanvas();
+
     window.addEventListener('mousemove', (e) => {
-      cursorGlow.style.left = `${e.clientX}px`;
-      cursorGlow.style.top = `${e.clientY}px`;
+      for(let i = 0; i < 2; i++) {
+        trail.push({
+          x: e.clientX,
+          y: e.clientY,
+          size: Math.random() * 3 + 1,
+          alpha: 1,
+          vx: (Math.random() - 0.5) * 1.5,
+          vy: (Math.random() - 0.5) * 1.5
+        });
+      }
     });
+
+    function animateCursorTrail() {
+      cCtx.clearRect(0, 0, cCanvas.width, cCanvas.height);
+      for (let i = 0; i < trail.length; i++) {
+        let p = trail[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.alpha -= 0.025;
+        
+        cCtx.fillStyle = `rgba(255, 232, 163, ${p.alpha})`;
+        cCtx.beginPath();
+        cCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        cCtx.fill();
+
+        if (p.alpha <= 0) {
+          trail.splice(i, 1);
+          i--;
+        }
+      }
+      requestAnimationFrame(animateCursorTrail);
+    }
+    animateCursorTrail();
 
     // Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -538,21 +792,19 @@
       mobileMenu.classList.toggle('flex');
     });
 
-    // Gallery Filter Tabs Logic
+    // Gallery Filter Tabs
     const tabBtns = document.querySelectorAll('.tab-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
 
     tabBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        // Reset active styles
         tabBtns.forEach(b => {
-          b.classList.remove('bg-gold-gradient', 'text-obsidian-900', 'shadow-md');
-          b.classList.add('glass-card', 'text-gray-400');
+          b.classList.remove('bg-gold-gradient', 'text-obsidian-950', 'shadow-lg');
+          b.classList.add('glass-card', 'text-gray-300');
         });
 
-        // Set active style on clicked
-        btn.classList.add('bg-gold-gradient', 'text-obsidian-900', 'shadow-md');
-        btn.classList.remove('glass-card', 'text-gray-400');
+        btn.classList.add('bg-gold-gradient', 'text-obsidian-950', 'shadow-lg');
+        btn.classList.remove('glass-card', 'text-gray-300');
 
         const filter = btn.getAttribute('data-filter');
 
@@ -566,7 +818,7 @@
       });
     });
 
-    // Modal Interaction Logic
+    // Modal Lightbox Logic
     const modal = document.getElementById('modal');
     const modalCard = document.getElementById('modal-card');
     const closeModalBtn = document.getElementById('close-modal-btn');
@@ -596,6 +848,21 @@
     closeModalBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => {
       if (e.target === modal) closeModal();
+    });
+
+    // Contact Form Logic
+    const contactForm = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
+    const resetFormBtn = document.getElementById('reset-form-btn');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      formSuccess.classList.remove('hidden');
+    });
+
+    resetFormBtn.addEventListener('click', () => {
+      formSuccess.classList.add('hidden');
+      contactForm.reset();
     });
   </script>
 </body>
